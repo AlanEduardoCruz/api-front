@@ -1,14 +1,15 @@
 <form>
   <img src="assets/cliente.png" alt="" />
 
-  <input type="text" placeholder="Nome" class="form-control" />
-  <input type="number" placeholder="Idade" class="form-control" />
-  <input type="text" placeholder="Cidade" class="form-control" />
+  <input type="text" placeholder="Nome" class="form-control"  name="nome"  [(ngModel)] ="cliente.nome"/>
+  <input type="number" placeholder="Idade" class="form-control" name="idade" [(ngModel)] ="cliente.idade"/>
+  <input type="text" placeholder="Cidade" class="form-control" name="cidade" [(ngModel)] ="cliente.cidade"/>
 
   <input
     type="button"
     value="Cadastrar"    
     class="btn btn-primary"
+    (click)="cadastrar()"
   />
   <input
     type="button"
@@ -30,7 +31,9 @@
   />
 </form>
 
-<table class="table">
+
+
+<table class="table" *ngIf="tabela">
   <thead>
     <tr>
       <th>#</th>
@@ -46,7 +49,7 @@
       <td>{{c.nome}}</td>
       <td>{{c.idade}}</td>
       <td>{{c.cidade}}</td>
-      <td><button class="btn btn-success" >Selecionar</button></td>
+      <td><button class="btn btn-success"  (click)="selecionarCliente(i)">Selecionar</button></td>
     </tr>
 
   </tbody>
